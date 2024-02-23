@@ -4,3 +4,6 @@
 .vs/ArticulosWebApi/FileContentIndex/0f6cd4c4-c4d6-4406-b366-37e552ae900f.vsidx
 ArticulosWebApi/bin/Debug/*
 ArticulosWebApi/obj/*
+.vs/*
+ArticulosWebApi/bin/*
+ArticulosWebApi/Properties/*
