@@ -25,6 +25,8 @@ namespace ArticulosWebApi.Controllers
                     resultList.Data = [.. cnt.Articulos];
                 }
                 resultList.Success = true;
+                resultList.Mensaje = "enable cors";
+                
 
             }
             catch (Exception er)
@@ -46,6 +48,7 @@ namespace ArticulosWebApi.Controllers
                 using PruebasApiCoreContext cnt = new();
                 resultObj.Data = await cnt.Articulos.FirstOrDefaultAsync(x => x.Id == id);
                 resultObj.Success = resultObj.Data != null;
+                resultObj.Mensaje = resultObj.Data != null?"":"Articulo no encontrado";
 
             }
             catch (Exception er)
@@ -63,12 +66,12 @@ namespace ArticulosWebApi.Controllers
             ResultObject<Articulo> resultObj = new();
             try
             {
-                if (data.Id == 0)
-                {
-                    resultObj.Mensaje = "Alerta: ingrese un código de artículo diferente de cero...";
-                    resultObj.Success = false;
-                    return resultObj;
-                }
+                //if (data.Id == 0)
+                //{
+                //    resultObj.Mensaje = "Alerta: ingrese un código de artículo diferente de cero...";
+                //    resultObj.Success = false;
+                //    return resultObj;
+                //}
                 data.Id = 0;
                 using PruebasApiCoreContext cnt = new();
                 {
@@ -90,6 +93,7 @@ namespace ArticulosWebApi.Controllers
             catch (Exception er)
             {
                 //resultObj.Error = er;
+                resultObj.Mensaje = "Ocurrio un error<T-C1>...";
                 resultObj.Success = false;
             }
             return resultObj;

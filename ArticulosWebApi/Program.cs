@@ -1,5 +1,14 @@
+var cors = "_mycors";
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: cors,
+                      builder =>
+                      {
+                          //builder.WithOrigins("http://127.0.0.1:4200").AllowAnyMethod();
+                          builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                      });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -17,7 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(cors);
 app.UseAuthorization();
 
 app.MapControllers();
